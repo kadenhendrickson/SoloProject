@@ -9,11 +9,9 @@
 import Foundation
 
 class Video {
-    let url: String
-    let thumbUrl: String
+    let url: URL
     
-    init(url: String, thumbUrl: String) {
+    init(url: URL) {
         self.url = url
-        self.thumbUrl = thumbUrl
     }
 }
