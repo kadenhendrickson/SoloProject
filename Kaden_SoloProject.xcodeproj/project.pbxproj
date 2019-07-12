@@ -12,7 +12,7 @@
 		DCE57A2D22D50ADD005EE629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE57A2C22D50ADD005EE629 /* Assets.xcassets */; };
 		DCE57A3022D50ADD005EE629 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE57A2E22D50ADD005EE629 /* LaunchScreen.storyboard */; };
 		DCE57AAE22D5106F005EE629 /* FirebaseStorage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE57A9C22D5106E005EE629 /* FirebaseStorage.framework */; };
-		DCE57AAF22D5106F005EE629 /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE57A9D22D5106E005EE629 /* gRPC-C++.framework */; };
+		DCE57AAF22D5106F005EE629 /* gRPC-C++.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE57A9D22D5106E005EE629 /* gRPC-C++.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		DCE57AB022D5106F005EE629 /* FirebaseFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE57A9E22D5106E005EE629 /* FirebaseFirestore.framework */; };
 		DCE57AB122D5106F005EE629 /* gRPC-Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE57A9F22D5106E005EE629 /* gRPC-Core.framework */; };
 		DCE57AB222D5106F005EE629 /* FIRAnalyticsConnector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE57AA022D5106E005EE629 /* FIRAnalyticsConnector.framework */; };
@@ -36,6 +36,15 @@
 		DCE57ACD22D5145C005EE629 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57ACC22D5145C005EE629 /* Video.swift */; };
 		DCE57ACF22D5149A005EE629 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57ACE22D5149A005EE629 /* User.swift */; };
 		DCE57AD322D518E0005EE629 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57AD222D518E0005EE629 /* Constants.swift */; };
+		DCE57AD822D5314D005EE629 /* UserRequestTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57AD722D5314D005EE629 /* UserRequestTableViewController.swift */; };
+		DCE57ADB22D53190005EE629 /* CreateRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57ADA22D53190005EE629 /* CreateRequestViewController.swift */; };
+		DCE57ADD22D531AF005EE629 /* PendingRequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57ADC22D531AF005EE629 /* PendingRequestDetailViewController.swift */; };
+		DCE57ADF22D531BE005EE629 /* ReadyForPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57ADE22D531BE005EE629 /* ReadyForPaymentViewController.swift */; };
+		DCE57AE122D53389005EE629 /* RequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57AE022D53389005EE629 /* RequestController.swift */; };
+		DCE57AE322D53399005EE629 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57AE222D53399005EE629 /* UserController.swift */; };
+		DCE57AE522D5340A005EE629 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57AE422D5340A005EE629 /* UserProfileViewController.swift */; };
+		DCE57AE722D54EA9005EE629 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DCE57AE622D54EA9005EE629 /* GoogleService-Info.plist */; };
+		DCE57AEC22D662F4005EE629 /* UserRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57AEB22D662F4005EE629 /* UserRequestTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,24 +54,24 @@
 		DCE57A2C22D50ADD005EE629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCE57A2F22D50ADD005EE629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCE57A3122D50ADD005EE629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DCE57A9C22D5106E005EE629 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Carthage/Build/iOS/FirebaseStorage.framework; sourceTree = SOURCE_ROOT; };
-		DCE57A9D22D5106E005EE629 /* gRPC-C++.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-C++.framework"; path = "Carthage/Build/iOS/gRPC-C++.framework"; sourceTree = SOURCE_ROOT; };
-		DCE57A9E22D5106E005EE629 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Carthage/Build/iOS/FirebaseFirestore.framework; sourceTree = SOURCE_ROOT; };
-		DCE57A9F22D5106E005EE629 /* gRPC-Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-Core.framework"; path = "Carthage/Build/iOS/gRPC-Core.framework"; sourceTree = SOURCE_ROOT; };
-		DCE57AA022D5106E005EE629 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Carthage/Build/iOS/FIRAnalyticsConnector.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA122D5106E005EE629 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Carthage/Build/iOS/FirebaseAuth.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA222D5106E005EE629 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Carthage/Build/iOS/FirebaseAnalytics.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA322D5106E005EE629 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Carthage/Build/iOS/FirebaseInstanceID.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA422D5106E005EE629 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Carthage/Build/iOS/Protobuf.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA522D5106F005EE629 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Carthage/Build/iOS/FirebaseCoreDiagnostics.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA622D5106F005EE629 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Carthage/Build/iOS/Firebase.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA722D5106F005EE629 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Carthage/Build/iOS/FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA822D5106F005EE629 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Carthage/Build/iOS/GoogleAppMeasurement.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AA922D5106F005EE629 /* BoringSSL-GRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BoringSSL-GRPC.framework"; path = "Carthage/Build/iOS/BoringSSL-GRPC.framework"; sourceTree = SOURCE_ROOT; };
-		DCE57AAA22D5106F005EE629 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Carthage/Build/iOS/GoogleUtilities.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AAB22D5106F005EE629 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Carthage/Build/iOS/GTMSessionFetcher.framework; sourceTree = SOURCE_ROOT; };
-		DCE57AAC22D5106F005EE629 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Carthage/Build/iOS/leveldb-library.framework"; sourceTree = SOURCE_ROOT; };
-		DCE57AAD22D5106F005EE629 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Carthage/Build/iOS/nanopb.framework; sourceTree = SOURCE_ROOT; };
+		DCE57A9C22D5106E005EE629 /* FirebaseStorage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseStorage.framework; path = Kaden_SoloProject/Frameworks/FirebaseStorage.framework; sourceTree = SOURCE_ROOT; };
+		DCE57A9D22D5106E005EE629 /* gRPC-C++.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-C++.framework"; path = "Kaden_SoloProject/Frameworks/gRPC-C++.framework"; sourceTree = SOURCE_ROOT; };
+		DCE57A9E22D5106E005EE629 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseFirestore.framework; path = Kaden_SoloProject/Frameworks/FirebaseFirestore.framework; sourceTree = SOURCE_ROOT; };
+		DCE57A9F22D5106E005EE629 /* gRPC-Core.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "gRPC-Core.framework"; path = "Kaden_SoloProject/Frameworks/gRPC-Core.framework"; sourceTree = SOURCE_ROOT; };
+		DCE57AA022D5106E005EE629 /* FIRAnalyticsConnector.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FIRAnalyticsConnector.framework; path = Kaden_SoloProject/Frameworks/FIRAnalyticsConnector.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA122D5106E005EE629 /* FirebaseAuth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAuth.framework; path = Kaden_SoloProject/Frameworks/FirebaseAuth.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA222D5106E005EE629 /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Kaden_SoloProject/Frameworks/FirebaseAnalytics.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA322D5106E005EE629 /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Kaden_SoloProject/Frameworks/FirebaseInstanceID.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA422D5106E005EE629 /* Protobuf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Protobuf.framework; path = Kaden_SoloProject/Frameworks/Protobuf.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA522D5106F005EE629 /* FirebaseCoreDiagnostics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCoreDiagnostics.framework; path = Kaden_SoloProject/Frameworks/FirebaseCoreDiagnostics.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA622D5106F005EE629 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = Kaden_SoloProject/Frameworks/Firebase.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA722D5106F005EE629 /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Kaden_SoloProject/Frameworks/FirebaseCore.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA822D5106F005EE629 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleAppMeasurement.framework; path = Kaden_SoloProject/Frameworks/GoogleAppMeasurement.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AA922D5106F005EE629 /* BoringSSL-GRPC.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "BoringSSL-GRPC.framework"; path = "Kaden_SoloProject/Frameworks/BoringSSL-GRPC.framework"; sourceTree = SOURCE_ROOT; };
+		DCE57AAA22D5106F005EE629 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleUtilities.framework; path = Kaden_SoloProject/Frameworks/GoogleUtilities.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AAB22D5106F005EE629 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GTMSessionFetcher.framework; path = Kaden_SoloProject/Frameworks/GTMSessionFetcher.framework; sourceTree = SOURCE_ROOT; };
+		DCE57AAC22D5106F005EE629 /* leveldb-library.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "leveldb-library.framework"; path = "Kaden_SoloProject/Frameworks/leveldb-library.framework"; sourceTree = SOURCE_ROOT; };
+		DCE57AAD22D5106F005EE629 /* nanopb.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = nanopb.framework; path = Kaden_SoloProject/Frameworks/nanopb.framework; sourceTree = SOURCE_ROOT; };
 		DCE57AC122D51091005EE629 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		DCE57AC322D5109F005EE629 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		DCE57AC522D510A4005EE629 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -71,6 +80,15 @@
 		DCE57ACC22D5145C005EE629 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		DCE57ACE22D5149A005EE629 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DCE57AD222D518E0005EE629 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DCE57AD722D5314D005EE629 /* UserRequestTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestTableViewController.swift; sourceTree = "<group>"; };
+		DCE57ADA22D53190005EE629 /* CreateRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRequestViewController.swift; sourceTree = "<group>"; };
+		DCE57ADC22D531AF005EE629 /* PendingRequestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingRequestDetailViewController.swift; sourceTree = "<group>"; };
+		DCE57ADE22D531BE005EE629 /* ReadyForPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyForPaymentViewController.swift; sourceTree = "<group>"; };
+		DCE57AE022D53389005EE629 /* RequestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestController.swift; sourceTree = "<group>"; };
+		DCE57AE222D53399005EE629 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		DCE57AE422D5340A005EE629 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		DCE57AE622D54EA9005EE629 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DCE57AEB22D662F4005EE629 /* UserRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRequestTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,27 +143,12 @@
 		DCE57A2422D50ADD005EE629 /* Kaden_SoloProject */ = {
 			isa = PBXGroup;
 			children = (
-				DCE57AA922D5106F005EE629 /* BoringSSL-GRPC.framework */,
-				DCE57AA022D5106E005EE629 /* FIRAnalyticsConnector.framework */,
-				DCE57AA622D5106F005EE629 /* Firebase.framework */,
-				DCE57AA222D5106E005EE629 /* FirebaseAnalytics.framework */,
-				DCE57AA122D5106E005EE629 /* FirebaseAuth.framework */,
-				DCE57AA722D5106F005EE629 /* FirebaseCore.framework */,
-				DCE57AA522D5106F005EE629 /* FirebaseCoreDiagnostics.framework */,
-				DCE57A9E22D5106E005EE629 /* FirebaseFirestore.framework */,
-				DCE57AA322D5106E005EE629 /* FirebaseInstanceID.framework */,
-				DCE57A9C22D5106E005EE629 /* FirebaseStorage.framework */,
-				DCE57AA822D5106F005EE629 /* GoogleAppMeasurement.framework */,
-				DCE57AAA22D5106F005EE629 /* GoogleUtilities.framework */,
-				DCE57A9D22D5106E005EE629 /* gRPC-C++.framework */,
-				DCE57A9F22D5106E005EE629 /* gRPC-Core.framework */,
-				DCE57AAB22D5106F005EE629 /* GTMSessionFetcher.framework */,
-				DCE57AAC22D5106F005EE629 /* leveldb-library.framework */,
-				DCE57AAD22D5106F005EE629 /* nanopb.framework */,
-				DCE57AA422D5106E005EE629 /* Protobuf.framework */,
+				DCE57AD422D52CB5005EE629 /* Frameworks */,
 				DCE57A2922D50ADD005EE629 /* Main.storyboard */,
 				DCE57A3722D50AF3005EE629 /* Resources */,
 				DCE57AC922D51139005EE629 /* Models */,
+				DCE57AD522D52E4F005EE629 /* Controllers */,
+				DCE57AD622D5311E005EE629 /* ViewControllers */,
 			);
 			path = Kaden_SoloProject;
 			sourceTree = "<group>";
@@ -157,6 +160,7 @@
 				DCE57A2C22D50ADD005EE629 /* Assets.xcassets */,
 				DCE57A2E22D50ADD005EE629 /* LaunchScreen.storyboard */,
 				DCE57A3122D50ADD005EE629 /* Info.plist */,
+				DCE57AE622D54EA9005EE629 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -180,6 +184,69 @@
 				DCE57AD222D518E0005EE629 /* Constants.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DCE57AD422D52CB5005EE629 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCE57AA922D5106F005EE629 /* BoringSSL-GRPC.framework */,
+				DCE57AA022D5106E005EE629 /* FIRAnalyticsConnector.framework */,
+				DCE57AA622D5106F005EE629 /* Firebase.framework */,
+				DCE57AA222D5106E005EE629 /* FirebaseAnalytics.framework */,
+				DCE57AA122D5106E005EE629 /* FirebaseAuth.framework */,
+				DCE57AA722D5106F005EE629 /* FirebaseCore.framework */,
+				DCE57AA522D5106F005EE629 /* FirebaseCoreDiagnostics.framework */,
+				DCE57A9E22D5106E005EE629 /* FirebaseFirestore.framework */,
+				DCE57AA322D5106E005EE629 /* FirebaseInstanceID.framework */,
+				DCE57A9C22D5106E005EE629 /* FirebaseStorage.framework */,
+				DCE57AA822D5106F005EE629 /* GoogleAppMeasurement.framework */,
+				DCE57AAA22D5106F005EE629 /* GoogleUtilities.framework */,
+				DCE57A9D22D5106E005EE629 /* gRPC-C++.framework */,
+				DCE57A9F22D5106E005EE629 /* gRPC-Core.framework */,
+				DCE57AAB22D5106F005EE629 /* GTMSessionFetcher.framework */,
+				DCE57AAC22D5106F005EE629 /* leveldb-library.framework */,
+				DCE57AAD22D5106F005EE629 /* nanopb.framework */,
+				DCE57AA422D5106E005EE629 /* Protobuf.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		DCE57AD522D52E4F005EE629 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCE57AEA22D662D5005EE629 /* Views */,
+				DCE57AE022D53389005EE629 /* RequestController.swift */,
+				DCE57AE222D53399005EE629 /* UserController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		DCE57AD622D5311E005EE629 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCE57AD922D53162005EE629 /* User ViewControllers */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		DCE57AD922D53162005EE629 /* User ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				DCE57AD722D5314D005EE629 /* UserRequestTableViewController.swift */,
+				DCE57ADA22D53190005EE629 /* CreateRequestViewController.swift */,
+				DCE57ADC22D531AF005EE629 /* PendingRequestDetailViewController.swift */,
+				DCE57ADE22D531BE005EE629 /* ReadyForPaymentViewController.swift */,
+				DCE57AE422D5340A005EE629 /* UserProfileViewController.swift */,
+			);
+			path = "User ViewControllers";
+			sourceTree = "<group>";
+		};
+		DCE57AEA22D662D5005EE629 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DCE57AEB22D662F4005EE629 /* UserRequestTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCE57AE722D54EA9005EE629 /* GoogleService-Info.plist in Resources */,
 				DCE57AC822D510E3005EE629 /* gRPCCertificates-Cpp.bundle in Resources */,
 				DCE57A3022D50ADD005EE629 /* LaunchScreen.storyboard in Resources */,
 				DCE57A2D22D50ADD005EE629 /* Assets.xcassets in Resources */,
@@ -254,11 +322,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCE57AD822D5314D005EE629 /* UserRequestTableViewController.swift in Sources */,
+				DCE57AE522D5340A005EE629 /* UserProfileViewController.swift in Sources */,
+				DCE57AE122D53389005EE629 /* RequestController.swift in Sources */,
+				DCE57ADB22D53190005EE629 /* CreateRequestViewController.swift in Sources */,
+				DCE57AE322D53399005EE629 /* UserController.swift in Sources */,
 				DCE57ACF22D5149A005EE629 /* User.swift in Sources */,
+				DCE57AEC22D662F4005EE629 /* UserRequestTableViewCell.swift in Sources */,
+				DCE57ADD22D531AF005EE629 /* PendingRequestDetailViewController.swift in Sources */,
 				DCE57A2622D50ADD005EE629 /* AppDelegate.swift in Sources */,
 				DCE57ACD22D5145C005EE629 /* Video.swift in Sources */,
 				DCE57ACB22D5123B005EE629 /* Request.swift in Sources */,
 				DCE57AD322D518E0005EE629 /* Constants.swift in Sources */,
+				DCE57ADF22D531BE005EE629 /* ReadyForPaymentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

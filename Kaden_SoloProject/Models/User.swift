@@ -17,7 +17,7 @@ class User {
     let company: String
     let profileImage: Data
     
-    init(userID: String, fullName: String, email: String, company: String, profileImage: UIImage) {
+    init(userID: String = UUID().uuidString, fullName: String, email: String, company: String, profileImage: UIImage) {
         self.userID = userID
         self.fullName = fullName
         self.email = email

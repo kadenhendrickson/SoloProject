@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum UserConstants {
+struct UserConstants {
     static let userIDKey = "userID"
     static let fullNameKey = "fullName"
     static let emailKey = "email"
@@ -16,7 +16,9 @@ enum UserConstants {
     static let profileImageKey = "profileImage"
 }
 
-enum RequestConstants {
+struct RequestConstants {
+    static let projectNameKey = "projectName"
+    static let requestIDKey = "requestID"
     static let userFullNameKey = "usersFullName"
     static let userReferenceKey = "userReference"
     static let timestampKey = "timestamp"
@@ -34,9 +36,14 @@ enum RequestConstants {
     static let videoPathIDKey = "videoPathID"
 }
 
-enum Status {
-    case pending
-    case inProgress
-    case awaitingPayment
-    case complete
+struct StatusConstants {
+    static let pendingKey = "Pending"
+    static let inProgressKey = "In Prgoress"
+    static let awaitingPaymentKey = "Awaiting Payment"
+    static let completeKey = "Complete"
+}
+
+struct FirestoreConstants {
+    static let RequestCollectionKey = "Requests"
+    static let UserCollectionKey = "Users"
 }

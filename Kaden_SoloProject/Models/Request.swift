@@ -8,14 +8,14 @@
 
 import UIKit
 
-
-
 class Request {
+    let projectName: String?
+    let requestID: String
     let usersFullName: String
     let userReference: String
     let timestamp: Date
     let address: String
-    let status: Status
+    let status: String
     let squareFootage: String
     let comments: String
     let userDateOne: Date
@@ -27,8 +27,10 @@ class Request {
     let photoPathIDs: [String]
     let videoPathIDs: [String]
     
-    init(usersFullName: String, userReference: String, timestamp: Date = Date(), address: String, status: Status = .pending , squareFootage: String, comments: String, userDateOne: Date, userDateTwo: Date, userDateThree: Date, chosenDate: Date?, photos: [UIImage] = [], videos: [Video] = [], photoPathIDs: [String] = [], videoPathIDs: [String] = [] ) {
+    init(projectName: String?, requestID: String = UUID().uuidString, usersFullName: String = UserController.shared.currentUser!.fullName, userReference: String = UserController.shared.currentUser!.userID, timestamp: Date = Date(), address: String, status: String = StatusConstants.pendingKey, squareFootage: String, comments: String, userDateOne: Date, userDateTwo: Date, userDateThree: Date, chosenDate: Date?, photos: [UIImage] = [], videos: [Video] = [], photoPathIDs: [String] = [], videoPathIDs: [String] = [] ) {
         
+        self.projectName = projectName
+        self.requestID = requestID
         self.usersFullName = usersFullName
         self.userReference = userReference
         self.timestamp = timestamp
@@ -47,7 +49,9 @@ class Request {
     }
     
     var dictionaryRepresentation: [String:Any] {
-        return [RequestConstants.userFullNameKey : usersFullName,
+        return [RequestConstants.projectNameKey : projectName ?? "My project",
+                RequestConstants.requestIDKey : requestID,
+                RequestConstants.userFullNameKey : usersFullName,
                 RequestConstants.userReferenceKey : userReference,
                 RequestConstants.timestampKey : timestamp,
                 RequestConstants.addressKey : address,
@@ -62,11 +66,13 @@ class Request {
                 RequestConstants.videoPathIDKey : videoPathIDs]
     }
     
-    convenience init?(firestore document: [String:Any]) {
-        guard let usersFullName = document[RequestConstants.userFullNameKey] as? String,
+    convenience init?(document: [String:Any]) {
+        guard let projectName = document[RequestConstants.projectNameKey] as? String,
+            let requestID = document[RequestConstants.requestIDKey] as? String,
+            let usersFullName = document[RequestConstants.userFullNameKey] as? String,
             let userReference = document[RequestConstants.userReferenceKey] as? String,
             let address = document[RequestConstants.addressKey] as? String,
-            let status = document[RequestConstants.statusKey] as? Status,
+            let status = document[RequestConstants.statusKey] as? String,
             let timestamp = document[RequestConstants.timestampKey] as? Date,
             let squareFootage = document[RequestConstants.squareFootageKey] as? String,
             let comments = document[RequestConstants.commentsKey] as? String,
@@ -77,7 +83,7 @@ class Request {
             let photoPathIDs = document[RequestConstants.photoPathIDKey] as? [String],
             let videoPathIDs = document[RequestConstants.videoPathIDKey] as? [String] else {return nil}
         
-        self.init(usersFullName: usersFullName, userReference: userReference, timestamp: timestamp, address: address, status: status, squareFootage: squareFootage, comments: comments, userDateOne: userDateOne, userDateTwo: userDateTwo, userDateThree: userDateThree, chosenDate: chosenDate, photos: [], videos: [], photoPathIDs: photoPathIDs, videoPathIDs: videoPathIDs)
+        self.init(projectName: projectName, requestID: requestID, usersFullName: usersFullName, userReference: userReference, timestamp: timestamp, address: address, status: status, squareFootage: squareFootage, comments: comments, userDateOne: userDateOne, userDateTwo: userDateTwo, userDateThree: userDateThree, chosenDate: chosenDate, photos: [], videos: [], photoPathIDs: photoPathIDs, videoPathIDs: videoPathIDs)
     }
 }
 
