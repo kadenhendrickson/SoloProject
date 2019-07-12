@@ -22,8 +22,9 @@ class UserController {
     func CreateUser(fullName: String, email: String, companyName: String, profileImage: UIImage, completion: @escaping (Bool) -> Void) {
         let user = User(fullName: fullName, email: email, company: companyName, profileImage: profileImage)
         let userDictionary = user.dictionaryRepresentation
-        db.collection("Users").document(user.userID).setData(userDictionary)
+        db.collection(FirestoreConstants.UserCollectionKey).document(user.userID).setData(userDictionary)
         currentUser = user
+        completion(true)
     }
     
 }

@@ -89,23 +89,26 @@ class UserRequestTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? UserRequestTableViewCell
         
         switch selectedSegment {
         case 0:
-            
+            guard let pendingRequestArray = pendingAndInProgressRequests else {return UITableViewCell()}
+            let request = pendingRequestArray[indexPath.row]
+            cell?.request = request
         case 1:
-            guard let awaitingPaymentArray = awaitingPaymentRequests else {return 0}
-            return awaitingPaymentArray.count
+            guard let awaitingPaymentArray = awaitingPaymentRequests else {return UITableViewCell()}
+            let request = awaitingPaymentArray[indexPath.row]
+            cell?.request = request
         case 2:
-            guard let completedArray = completedRequests else {return 0}
-            return completedArray.count
+            guard let completedArray = completedRequests else {return UITableViewCell()}
+            let request = completedArray[indexPath.row]
+            cell?.request = request
         default:
             print("How did you find another segment man?")
-            return 0
+            return UITableViewCell()
         }
-
-        return cell
+        return cell ?? UITableViewCell()
     }
     
 
