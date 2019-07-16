@@ -16,7 +16,7 @@ class Request {
     let userReference: String
     let timestamp: Date
     let address: String
-    let status: String
+    var status: String
     let squareFootage: String
     let comments: String
     let userDateOne: Date

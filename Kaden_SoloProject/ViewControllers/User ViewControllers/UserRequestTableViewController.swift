@@ -12,11 +12,7 @@ class UserRequestTableViewController: UITableViewController {
     
     var completedRequests: [Request] = []
     var awaitingPaymentRequests: [Request] = []
-    var pendingAndInProgressRequests: [Request] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var pendingAndInProgressRequests: [Request] = []
     
     @IBOutlet weak var segmentController: UISegmentedControl!
     
@@ -31,6 +27,21 @@ class UserRequestTableViewController: UITableViewController {
         populatePendingArray()
     }
     
+    //MARK: - Helper Functions
+    func populatePendingArray() {
+        guard let currentUser = UserController.shared.currentUser else {return}
+        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.pendingKey) { (requests) in
+            self.pendingAndInProgressRequests.removeAll()
+            self.pendingAndInProgressRequests = requests
+            RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.inProgressKey, completion: { (requests) in
+                self.pendingAndInProgressRequests.append(contentsOf: requests)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            })
+           
+        }
+    }
     func populateAwaitingPaymentArray(_ currentUser: User) {
         RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.awaitingPaymentKey) { (requests) in
             self.awaitingPaymentRequests = requests
@@ -59,16 +70,11 @@ class UserRequestTableViewController: UITableViewController {
         }
     }
     
-    //MARK: - Helper Functions
-    func populatePendingArray() {
-        guard let currentUser = UserController.shared.currentUser else {return}
-        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.pendingKey) { (requests) in
-            self.pendingAndInProgressRequests = requests
-        }
+   
 //        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.inProgressKey) { (requests) in
 //            self.pendingAndInProgressRequests.append(contentsOf: requests)
 //        }
-    }
+    
     
     // MARK: - Table view data source
 

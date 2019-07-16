@@ -43,11 +43,12 @@ class RequestController {
     func FetchRequestsWith(userID: String, requestStatus: String, completion: @escaping ([Request]) -> Void) {
         let requestReference = db.collection(FirestoreConstants.RequestCollectionKey)
         var requestsArray: [Request] = []
-        requestReference.whereField(RequestConstants.statusKey, isEqualTo: requestStatus).whereField(RequestConstants.userReferenceKey, isEqualTo: userID).order(by: "timestamp").getDocuments { (snapshot, error) in
+        requestReference.whereField(RequestConstants.statusKey, isEqualTo: requestStatus).whereField(RequestConstants.userReferenceKey, isEqualTo: userID).order(by: "timestamp").addSnapshotListener { (snapshot, error) in
             if let error = error {
                 print("🤪🤪There was an error fetching your requests!!🤪🤪 :\(error.localizedDescription)")
             }
             guard let documents = snapshot?.documents else {return}
+            requestsArray.removeAll()
             for document in documents {
                 let dataDictionary = document.data()
                 guard let request = Request(document: dataDictionary) else {print("I am failing to create a request object");return}
@@ -106,9 +107,10 @@ class RequestController {
     
     //HOSTCRUDS
     //HostUpdateRequestStatus
-    func updateRequestStatusWith(requestID: String, status: String) {
+    func updateRequestStatusAndDateWith(requestID: String, chosenDate: Date, status: String) {
         let requestRef = db.collection(FirestoreConstants.RequestCollectionKey).document(requestID)
         requestRef.updateData(["status" : status])
+        requestRef.updateData([RequestConstants.chosenDateKey : chosenDate])
     }
     //HostUpdateRequestPathID's
     func updateRequestPathIDsWith(requestID: String, photoPathIDs: [String], videoPathIDs: [String]) {
@@ -120,11 +122,12 @@ class RequestController {
     func fetchRequestsWith(status: String, completion: @escaping ([Request]) -> Void) {
         var requestsArray: [Request] = []
         let requestsRef = db.collection(FirestoreConstants.RequestCollectionKey)
-        requestsRef.whereField(RequestConstants.statusKey, isEqualTo: status).order(by: "timestamp").getDocuments { (snapshot, error) in
+        requestsRef.whereField(RequestConstants.statusKey, isEqualTo: status).order(by: "timestamp").addSnapshotListener { (snapshot, error) in
             if let error = error {
                 print("🤪🤪There was an error fetching the users requests!!🤪🤪 : \(error.localizedDescription)")
                 return
             }
+            requestsArray.removeAll()
             guard let documents = snapshot?.documents else {return}
             for document in documents {
                 let dataDictionary = document.data()
@@ -132,9 +135,9 @@ class RequestController {
                     requestsArray.append(request)
                 }
             }
+            completion(requestsArray)
+            return
         }
-        completion(requestsArray)
-        return
     }
     //Host push photos to cloud storage
     func uploadImagesToCloudStorageWith(requestID: String, images: [UIImage], downloadUrls completion: @escaping ([String]) -> Void) {
