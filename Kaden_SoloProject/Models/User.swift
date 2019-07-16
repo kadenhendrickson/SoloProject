@@ -17,19 +17,27 @@ class User {
     let company: String
     let profileImage: Data
     
-    init(userID: String = UUID().uuidString, fullName: String, email: String, company: String, profileImage: UIImage) {
+    init(userID: String, fullName: String, email: String, company: String, profileImage: UIImage) {
         self.userID = userID
         self.fullName = fullName
         self.email = email
         self.company = company
-        self.profileImage  = profileImage.jpegData(compressionQuality: 0.15)!
+        self.profileImage  = profileImage.jpegData(compressionQuality: 0.5)!
     }
     
     var dictionaryRepresentation: [String:Any] {
         return [UserConstants.userIDKey : userID,
                 UserConstants.fullNameKey : fullName,
                 UserConstants.emailKey : email,
-                UserConstants.companyKey : company,
-                UserConstants.profileImageKey : profileImage]
+                UserConstants.companyKey : company]
+    }
+    
+    convenience init?(document: [String:Any], profileImage: UIImage) {
+        guard let userID = document[UserConstants.userIDKey] as? String,
+                let fullName = document[UserConstants.fullNameKey] as? String,
+                let email = document[UserConstants.emailKey] as? String,
+                let company = document[UserConstants.companyKey] as? String else {return nil}
+        self.init(userID: userID, fullName: fullName, email: email, company: company, profileImage: profileImage)
+        
     }
 }

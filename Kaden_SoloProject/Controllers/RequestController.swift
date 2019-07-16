@@ -12,8 +12,8 @@ import Firebase
 class RequestController {
     //MARK: - Properties
     static let shared = RequestController()
-    var db = Firestore.firestore()
-    
+    lazy var db = Firestore.firestore()
+    var requestListener: ListenerRegistration?
     
     
     //Push a document to firestore that has all of the request properties except the photos and videos array.
@@ -43,16 +43,17 @@ class RequestController {
     func FetchRequestsWith(userID: String, requestStatus: String, completion: @escaping ([Request]) -> Void) {
         let requestReference = db.collection(FirestoreConstants.RequestCollectionKey)
         var requestsArray: [Request] = []
-        requestReference.whereField(RequestConstants.userReferenceKey, isEqualTo: userID).whereField("status", isEqualTo: requestStatus).order(by: "timestamp").getDocuments { (snapshot, error) in
+        requestReference.whereField(RequestConstants.statusKey, isEqualTo: requestStatus).whereField(RequestConstants.userReferenceKey, isEqualTo: userID).order(by: "timestamp").getDocuments { (snapshot, error) in
             if let error = error {
                 print("🤪🤪There was an error fetching your requests!!🤪🤪 :\(error.localizedDescription)")
             }
             guard let documents = snapshot?.documents else {return}
             for document in documents {
                 let dataDictionary = document.data()
-                guard let request = Request(document: dataDictionary) else {return}
+                guard let request = Request(document: dataDictionary) else {print("I am failing to create a request object");return}
                 requestsArray.append(request)
             }
+            print("This is FETCHREQUESTWITHUSERID confirming thatt we have an array of requests!!")
             completion(requestsArray)
             return
         }
@@ -116,10 +117,10 @@ class RequestController {
                                "videoPathID" : FieldValue.arrayUnion(videoPathIDs)])
     }
     //FetchRequest for all requests (filter by status and sort by timestamp)
-    func fetchRequests(completion: @escaping ([Request]) -> Void) {
+    func fetchRequestsWith(status: String, completion: @escaping ([Request]) -> Void) {
         var requestsArray: [Request] = []
         let requestsRef = db.collection(FirestoreConstants.RequestCollectionKey)
-        requestsRef.getDocuments { (snapshot, error) in
+        requestsRef.whereField(RequestConstants.statusKey, isEqualTo: status).order(by: "timestamp").getDocuments { (snapshot, error) in
             if let error = error {
                 print("🤪🤪There was an error fetching the users requests!!🤪🤪 : \(error.localizedDescription)")
                 return

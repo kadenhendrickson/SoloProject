@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class Request {
     let projectName: String?
@@ -73,15 +74,21 @@ class Request {
             let userReference = document[RequestConstants.userReferenceKey] as? String,
             let address = document[RequestConstants.addressKey] as? String,
             let status = document[RequestConstants.statusKey] as? String,
-            let timestamp = document[RequestConstants.timestampKey] as? Date,
+            let timestampAsTimestamp = document[RequestConstants.timestampKey] as? Timestamp,
             let squareFootage = document[RequestConstants.squareFootageKey] as? String,
             let comments = document[RequestConstants.commentsKey] as? String,
-            let userDateOne = document[RequestConstants.userDateOneKey] as? Date,
-            let userDateTwo = document[RequestConstants.userDateTwoKey] as? Date,
-            let userDateThree = document[RequestConstants.userDateThreeKey]as? Date,
-            let chosenDate = document[RequestConstants.chosenDateKey] as? Date,
+            let userDateOneAsTimestamp = document[RequestConstants.userDateOneKey] as? Timestamp,
+            let userDateTwoAsTimestamp = document[RequestConstants.userDateTwoKey] as? Timestamp,
+            let userDateThreeAsTimestamp = document[RequestConstants.userDateThreeKey]as? Timestamp,
+            let chosenDateAsTimestamp = document[RequestConstants.chosenDateKey] as? Timestamp,
             let photoPathIDs = document[RequestConstants.photoPathIDKey] as? [String],
             let videoPathIDs = document[RequestConstants.videoPathIDKey] as? [String] else {return nil}
+        
+        let timestamp = timestampAsTimestamp.dateValue()
+        let userDateOne = userDateOneAsTimestamp.dateValue()
+        let userDateTwo = userDateTwoAsTimestamp.dateValue()
+        let userDateThree = userDateThreeAsTimestamp.dateValue()
+        let chosenDate = chosenDateAsTimestamp.dateValue()
         
         self.init(projectName: projectName, requestID: requestID, usersFullName: usersFullName, userReference: userReference, timestamp: timestamp, address: address, status: status, squareFootage: squareFootage, comments: comments, userDateOne: userDateOne, userDateTwo: userDateTwo, userDateThree: userDateThree, chosenDate: chosenDate, photos: [], videos: [], photoPathIDs: photoPathIDs, videoPathIDs: videoPathIDs)
     }

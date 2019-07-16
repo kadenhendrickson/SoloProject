@@ -38,7 +38,7 @@ struct RequestConstants {
 
 struct StatusConstants {
     static let pendingKey = "Pending"
-    static let inProgressKey = "In Prgoress"
+    static let inProgressKey = "In Progress"
     static let awaitingPaymentKey = "Awaiting Payment"
     static let completeKey = "Complete"
 }

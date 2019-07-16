@@ -10,48 +10,50 @@ import UIKit
 
 class UserRequestTableViewController: UITableViewController {
     
-    var completedRequests: [Request]?
-    var awaitingPaymentRequests: [Request]?
-    var pendingAndInProgressRequests: [Request]?
+    var completedRequests: [Request] = []
+    var awaitingPaymentRequests: [Request] = []
+    var pendingAndInProgressRequests: [Request] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     @IBOutlet weak var segmentController: UISegmentedControl!
+    
     
     var selectedSegment = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pendingAndInProgressRequests = []
+        guard let currentUser = UserController.shared.currentUser else {return}
+        populateCompleteArray(currentUser)
+        populateAwaitingPaymentArray(currentUser)
         populatePendingArray()
-        
+    }
+    
+    func populateAwaitingPaymentArray(_ currentUser: User) {
+        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.awaitingPaymentKey) { (requests) in
+            self.awaitingPaymentRequests = requests
+        }
+    }
+    
+    func populateCompleteArray(_ currentUser: User) {
+        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.completeKey) { (requests) in
+            self.completedRequests = requests
+        }
     }
     
     @IBAction func segmentControllerSectionTapped(_ sender: UISegmentedControl) {
-        guard let currentUser = UserController.shared.currentUser else {return}
         switch sender.selectedSegmentIndex {
         case 0:
             selectedSegment = 0
+            tableView.reloadData()
         case 1:
             selectedSegment = 1
-            if awaitingPaymentRequests == nil {
-                awaitingPaymentRequests = []
-                RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.awaitingPaymentKey) { (requests) in
-                    self.awaitingPaymentRequests?.append(contentsOf: requests)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-            }
+            tableView.reloadData()
         case 2:
             selectedSegment = 2
-            if completedRequests == nil {
-                completedRequests = []
-                RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.completeKey) { (requests) in
-                    self.completedRequests?.append(contentsOf: requests)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                }
-            }
+            tableView.reloadData()
         default:
             print("How did you find another section though?")
         }
@@ -61,11 +63,11 @@ class UserRequestTableViewController: UITableViewController {
     func populatePendingArray() {
         guard let currentUser = UserController.shared.currentUser else {return}
         RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.pendingKey) { (requests) in
-            self.pendingAndInProgressRequests?.append(contentsOf: requests)
+            self.pendingAndInProgressRequests = requests
         }
-        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.inProgressKey) { (requests) in
-            self.pendingAndInProgressRequests?.append(contentsOf: requests)
-        }
+//        RequestController.shared.FetchRequestsWith(userID: currentUser.userID, requestStatus: StatusConstants.inProgressKey) { (requests) in
+//            self.pendingAndInProgressRequests.append(contentsOf: requests)
+//        }
     }
     
     // MARK: - Table view data source
@@ -73,14 +75,11 @@ class UserRequestTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedSegment {
         case 0:
-            guard let pendingRequestArray = pendingAndInProgressRequests else {return 0}
-            return pendingRequestArray.count
+            return pendingAndInProgressRequests.count
         case 1:
-            guard let awaitingPaymentArray = awaitingPaymentRequests else {return 0}
-            return awaitingPaymentArray.count
+            return awaitingPaymentRequests.count
         case 2:
-            guard let completedArray = completedRequests else {return 0}
-            return completedArray.count
+            return completedRequests.count
         default:
             print("How did you find another segment man?")
             return 0
@@ -89,20 +88,17 @@ class UserRequestTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as? UserRequestTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "requestCell", for: indexPath) as? UserRequestTableViewCell
         
         switch selectedSegment {
         case 0:
-            guard let pendingRequestArray = pendingAndInProgressRequests else {return UITableViewCell()}
-            let request = pendingRequestArray[indexPath.row]
+            let request = pendingAndInProgressRequests[indexPath.row]
             cell?.request = request
         case 1:
-            guard let awaitingPaymentArray = awaitingPaymentRequests else {return UITableViewCell()}
-            let request = awaitingPaymentArray[indexPath.row]
+            let request = awaitingPaymentRequests[indexPath.row]
             cell?.request = request
         case 2:
-            guard let completedArray = completedRequests else {return UITableViewCell()}
-            let request = completedArray[indexPath.row]
+            let request = completedRequests[indexPath.row]
             cell?.request = request
         default:
             print("How did you find another segment man?")
@@ -147,14 +143,31 @@ class UserRequestTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toRequestDV" {
+            guard let desinationVC = segue.destination as? PendingRequestDetailViewController,
+                let index = tableView.indexPathForSelectedRow else {return}
+            var request: Request?
+            switch selectedSegment {
+            case 0:
+                request = pendingAndInProgressRequests[index.row]
+            case 1:
+                request = awaitingPaymentRequests[index.row]
+            case 2:
+                request = completedRequests[index.row]
+            default:
+                print("Idk which segment you are on")
+            }
+            guard let requestToSend = request else {return}
+            desinationVC.request = requestToSend
+            
+        }
     }
-    */
+    
 
 }
+

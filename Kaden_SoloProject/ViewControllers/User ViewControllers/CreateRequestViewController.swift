@@ -14,6 +14,8 @@ class CreateRequestViewController: UIViewController {
         let picker: UIDatePicker = UIDatePicker()
         picker.datePickerMode = .dateAndTime
         picker.addTarget(self, action: #selector(dateChanged(sender:)), for: .valueChanged)
+        picker.backgroundColor = .white
+        picker.minimumDate = Date()
         return picker
     }()
     
@@ -39,6 +41,9 @@ class CreateRequestViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
+        
         firstDateTextField.inputView = datePicker
         secondDateTextField.inputView = datePicker
         thirdDateTextField.inputView = datePicker
@@ -53,17 +58,14 @@ class CreateRequestViewController: UIViewController {
         guard let dateThree = dateThree else {presentAlert(withMessage: "Please make sure you gave me three date options!"); return}
         let comments = projectCommentsTextView.text ?? ""
         
-        
         RequestController.shared.UserCreateRequest(projectName: projectName, address: address, squareFootage: squareFootage, comments: comments, userDateOne: dateOne, userDateTwo: dateTwo, userDateThree: dateThree)
         
         navigationController?.popViewController(animated: true)
     }
     
-    
-    
     //MARK: - Helper Functions
     @objc func dateChanged(sender: UIDatePicker) {
-        if firstDateTextField.isEditing == true {
+            if firstDateTextField.isEditing == true {
             self.firstDateTextField.text = dateFormatter.string(from: sender.date)
             dateOne = sender.date
         } else if secondDateTextField.isEditing == true {
@@ -74,7 +76,7 @@ class CreateRequestViewController: UIViewController {
             dateThree = sender.date
         }
     }
-        
+    
     func presentAlert(withMessage: String) {
         let alertController = UIAlertController(title: nil, message: withMessage, preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

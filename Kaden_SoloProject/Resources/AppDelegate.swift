@@ -18,7 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         
-       
+//        UserController.shared.CreateUser(fullName: "Kaden Hendrickson", email: "kaden@gmail.com", companyName: "Openskys", profileImage: UIImage(named: "profile" )!) { (user) in
+//            if let user = user {
+//                print("users name is \(user.fullName)")
+//            }
+//        }
+        
+        UserController.shared.fetchCurrentUserWith(userID: "40C7B4C6-3B58-4253-9202-3A420C50F93A") { (user) in
+            if let user = user {
+                print("Success!!")
+                UserController.shared.currentUser = user
+            }
+        }
         
         return true
     }

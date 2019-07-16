@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DC86B6AD22DE20DA006D6238 /* RequestResponseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC86B6AC22DE20DA006D6238 /* RequestResponseTableViewCell.swift */; };
+		DCDDBA9A22DCD32800F95844 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDDBA9922DCD32800F95844 /* SignInViewController.swift */; };
+		DCDDBA9C22DCD33200F95844 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDDBA9B22DCD33200F95844 /* CreateAccountViewController.swift */; };
+		DCDDBA9E22DCDBC100F95844 /* ImagePickerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDDBA9D22DCDBC100F95844 /* ImagePickerHelper.swift */; };
+		DCDDBAA022DCF11F00F95844 /* FetchUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCDDBA9F22DCF11F00F95844 /* FetchUserViewController.swift */; };
 		DCE57A2622D50ADD005EE629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE57A2522D50ADD005EE629 /* AppDelegate.swift */; };
 		DCE57A2B22D50ADD005EE629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE57A2922D50ADD005EE629 /* Main.storyboard */; };
 		DCE57A2D22D50ADD005EE629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE57A2C22D50ADD005EE629 /* Assets.xcassets */; };
@@ -48,6 +53,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DC86B6AC22DE20DA006D6238 /* RequestResponseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResponseTableViewCell.swift; sourceTree = "<group>"; };
+		DCDDBA9922DCD32800F95844 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		DCDDBA9B22DCD33200F95844 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		DCDDBA9D22DCDBC100F95844 /* ImagePickerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelper.swift; sourceTree = "<group>"; };
+		DCDDBA9F22DCF11F00F95844 /* FetchUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchUserViewController.swift; sourceTree = "<group>"; };
 		DCE57A2222D50ADD005EE629 /* Kaden_SoloProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kaden_SoloProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE57A2522D50ADD005EE629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCE57A2A22D50ADD005EE629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -149,6 +159,7 @@
 				DCE57AC922D51139005EE629 /* Models */,
 				DCE57AD522D52E4F005EE629 /* Controllers */,
 				DCE57AD622D5311E005EE629 /* ViewControllers */,
+				DCDDBA9D22DCDBC100F95844 /* ImagePickerHelper.swift */,
 			);
 			path = Kaden_SoloProject;
 			sourceTree = "<group>";
@@ -225,6 +236,9 @@
 			isa = PBXGroup;
 			children = (
 				DCE57AD922D53162005EE629 /* User ViewControllers */,
+				DCDDBA9922DCD32800F95844 /* SignInViewController.swift */,
+				DCDDBA9B22DCD33200F95844 /* CreateAccountViewController.swift */,
+				DCDDBA9F22DCF11F00F95844 /* FetchUserViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -245,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				DCE57AEB22D662F4005EE629 /* UserRequestTableViewCell.swift */,
+				DC86B6AC22DE20DA006D6238 /* RequestResponseTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -322,16 +337,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCDDBA9C22DCD33200F95844 /* CreateAccountViewController.swift in Sources */,
+				DCDDBA9A22DCD32800F95844 /* SignInViewController.swift in Sources */,
 				DCE57AD822D5314D005EE629 /* UserRequestTableViewController.swift in Sources */,
+				DCDDBA9E22DCDBC100F95844 /* ImagePickerHelper.swift in Sources */,
 				DCE57AE522D5340A005EE629 /* UserProfileViewController.swift in Sources */,
 				DCE57AE122D53389005EE629 /* RequestController.swift in Sources */,
 				DCE57ADB22D53190005EE629 /* CreateRequestViewController.swift in Sources */,
 				DCE57AE322D53399005EE629 /* UserController.swift in Sources */,
 				DCE57ACF22D5149A005EE629 /* User.swift in Sources */,
 				DCE57AEC22D662F4005EE629 /* UserRequestTableViewCell.swift in Sources */,
+				DCDDBAA022DCF11F00F95844 /* FetchUserViewController.swift in Sources */,
 				DCE57ADD22D531AF005EE629 /* PendingRequestDetailViewController.swift in Sources */,
 				DCE57A2622D50ADD005EE629 /* AppDelegate.swift in Sources */,
 				DCE57ACD22D5145C005EE629 /* Video.swift in Sources */,
+				DC86B6AD22DE20DA006D6238 /* RequestResponseTableViewCell.swift in Sources */,
 				DCE57ACB22D5123B005EE629 /* Request.swift in Sources */,
 				DCE57AD322D518E0005EE629 /* Constants.swift in Sources */,
 				DCE57ADF22D531BE005EE629 /* ReadyForPaymentViewController.swift in Sources */,

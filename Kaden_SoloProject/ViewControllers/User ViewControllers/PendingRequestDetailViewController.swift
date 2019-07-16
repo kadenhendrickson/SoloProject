@@ -9,14 +9,23 @@
 import UIKit
 
 class PendingRequestDetailViewController: UIViewController {
+    
+    @IBOutlet weak var requestNameLabel: UILabel!
+    
+    var request: Request?
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateViews()
+       
         // Do any additional setup after loading the view.
     }
     
-
+    func updateViews() {
+        guard let request = request else {print("There isnt a request"); return}
+        self.requestNameLabel.text = request.projectName
+    }
+    
     /*
     // MARK: - Navigation
 
